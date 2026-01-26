@@ -1,11 +1,9 @@
 import express from "express"
 import * as rowdy from "rowdy-logger"
-import morgan from "morgan";
 import type { Request, Response, NextFunction } from "express";
-// import 
-// import globalerror from "./middleware/globalerror.js";
-// import apiKeysCheck from "./middleware/apikeys.js";
-// import error from './utilities/error.js'
+import globalerror from "../middleware/globalError.js";
+import notFound from "../middleware/notFound.js";
+import logReq from "../middleware/logReq.js";
 
 
 
@@ -17,7 +15,12 @@ const routesReport = rowdy.begin(app)
 
 // Middleware
 app.use(express.json()) // allows to use json like getting req.body
-app.use(morgan('tiny')) // logs the method used when calling request
+
+app.use(logReq);
+
+
+
+// app.use(morgan('tiny')) // logs the method used when calling request
 // app.use("/api", apiKeysCheck); // makes sure the apikey is set to all /api routes
 
 
@@ -35,11 +38,9 @@ app.use(morgan('tiny')) // logs the method used when calling request
 
 
 // Error Middleware
-app.use((req, res) => {
-    res.status(404).json({error: "Resource not found"})
-})
+app.use(notFound)
 
-// app.use(globalerror)
+app.use(globalerror)
 
 
 // Listener

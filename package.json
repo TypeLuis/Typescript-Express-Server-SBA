@@ -14,7 +14,6 @@
   "type": "module",
   "devDependencies": {
     "@types/express": "^5.0.6",
-    "@types/morgan": "^1.9.10",
     "@types/node": "^25.0.10",
     "@types/request": "^2.48.13",
     "tsx": "^4.21.0"
