@@ -1,0 +1,26 @@
+{
+  "name": "sba",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npx tsx --watch ./server/server.ts",
+    "initialize": "npx tsc --init"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/morgan": "^1.9.10",
+    "@types/node": "^25.0.10",
+    "@types/request": "^2.48.13",
+    "tsx": "^4.21.0"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "rowdy-logger": "^1.0.2"
+  }
+}
