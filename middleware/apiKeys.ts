@@ -1,10 +1,10 @@
 import msgError from "../utilities/msgError.js";
-import type { Request, Response, NextFunction } from "express";
+import type { RequestHandler } from "express";
 
 const apiKeys = ["perscholas", "ps-example", "hJAsknw-L198sAJD-l3kasx"]
 
 
-const apiKeysCheck =  (req:Request, res:Response, next:NextFunction) => {
+const apiKeysCheck:RequestHandler =  (req, res, next) => {
     var key = req.query["api-key"]
 
     // missing key

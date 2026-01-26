@@ -20,21 +20,10 @@ app.use(logReq);
 
 
 
-// app.use(morgan('tiny')) // logs the method used when calling request
-// app.use("/api", apiKeysCheck); // makes sure the apikey is set to all /api routes
-
-
-
 // Routes
 // app.use('/api/users', userRoutes)
 // app.use('/api/posts', postRoutes)
 
-
-// make sure to have api keys for this specific route
-// app.put('/', apiKeysCheck, (req, res) => {
-//     console.log(req.body)
-//     res.send("testing around")
-// })
 
 
 // Error Middleware
