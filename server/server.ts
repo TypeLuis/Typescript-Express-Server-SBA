@@ -4,6 +4,7 @@ import type { Request, Response, NextFunction } from "express";
 import globalerror from "../middleware/globalError.js";
 import notFound from "../middleware/notFound.js";
 import logReq from "../middleware/logReq.js";
+import userRoutes from "../routes/userRoutes.js";
 
 
 
@@ -21,7 +22,7 @@ app.use(logReq);
 
 
 // Routes
-// app.use('/api/users', userRoutes)
+app.use('/api/users', userRoutes)
 // app.use('/api/posts', postRoutes)
 
 
