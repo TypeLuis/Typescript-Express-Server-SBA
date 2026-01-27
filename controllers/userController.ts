@@ -3,6 +3,7 @@ import type { RequestHandler } from "express";
 import db from "../server/database.js"
 
 const userController = {
+    // Route to get multiple users
     getUsers : (async (req,res,next) => {
         try {
             const database = await db.readDB()
@@ -13,6 +14,7 @@ const userController = {
           }
     } ) as RequestHandler,
 
+    // Route to create a user
     createUser : (async (req, res, next) => {
         try {
             const {name, username} = req.body
@@ -31,9 +33,12 @@ const userController = {
         }
     }) as RequestHandler,
 
+    // Route to get a singular user
     getUser : (async (req,res,next) => {
         try {
             const id = Number(req.params.id)
+            if (Number.isNaN(id)) return next(msgError(400, "Invalid id"));
+            
             const database = await db.readDB()
             const user = database.users.find(u => u.id === id)
 
@@ -47,10 +52,11 @@ const userController = {
         }
     }) as RequestHandler,
 
+    // Route to update a user's username
     updateUser : (async (req, res, next) => {
         try {
             const id = Number(req.params.id)
-            if (Number.isNaN(id)) return next(msgError(400, "Invalid user id"));
+            if (Number.isNaN(id)) return next(msgError(400, "Invalid id"));
 
             const username = String(req.body?.username ?? "").trim()
           
@@ -69,6 +75,7 @@ const userController = {
     }) as RequestHandler,
 
 
+    // Route to Delete User, User's posts & user's like/ likes on user's post
     deleteUser : (async (req, res, next) => {
         try {
           const userId = Number(req.params.id)

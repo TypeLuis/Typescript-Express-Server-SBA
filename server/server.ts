@@ -1,15 +1,16 @@
 import express from "express"
 import * as rowdy from "rowdy-logger"
-import type { Request, Response, NextFunction } from "express";
 import globalerror from "../middleware/globalError.js";
 import notFound from "../middleware/notFound.js";
 import logReq from "../middleware/logReq.js";
 import userRoutes from "../routes/userRoutes.js";
+import postRoutes from "../routes/postRoutes.js";
+import dotenv from "dotenv";
 
-
+dotenv.config()
 
 // Setup
-const port = 3015
+const port = process.env.PORT || 3015
 const app = express()
 const routesReport = rowdy.begin(app)
 
@@ -23,7 +24,7 @@ app.use(logReq);
 
 // Routes
 app.use('/api/users', userRoutes)
-// app.use('/api/posts', postRoutes)
+app.use('/api/posts', postRoutes)
 
 
 

@@ -7,9 +7,6 @@ const requireBody =
     for (const field of fields) {
       if (!req.body?.[field]) {
         return next(msgError(400, `Missing field: ${field}`))
-        // return res.status(400).json({
-        //   error: `Missing field: ${field}`
-        // })
       }
     }
     next()
