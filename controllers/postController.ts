@@ -4,6 +4,8 @@ import db from "../server/database.js"
 
 
 const postController = {
+
+    // user creates a post
     createPost : (async (req, res, next) => {
         try {
             const userId = Number(req.params.id)
@@ -23,6 +25,7 @@ const postController = {
         }
     }) as RequestHandler,
 
+    // Get a post by ID
     getPost : (async (req,res,next) => {
         try {
             const postId = Number(req.params.id)
@@ -40,6 +43,7 @@ const postController = {
 
     }) as RequestHandler,
 
+    // Update either title or Content
     updatePost : (async (req, res, next) => {
         try {
             const postId = Number(req.params.id)
@@ -67,6 +71,7 @@ const postController = {
         }
     }) as RequestHandler,
 
+    // Delete a post and the likes associated
     deletePost : (async (req, res, next) => {
         try {
             const postId = Number(req.params.id)

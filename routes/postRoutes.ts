@@ -7,7 +7,13 @@ import postController from "../controllers/postController.js"
 
 const router = express.Router()
 
+
+
+
 router
+
+
+
     .route('/:id')
 
     .get(postController.getPost)
@@ -16,6 +22,6 @@ router
 
     .put(postController.updatePost)
 
-    .delete(postController.deletePost)
+    .delete(apiKeysCheck, postController.deletePost);
 
 export default router

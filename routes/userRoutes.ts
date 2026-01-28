@@ -19,6 +19,6 @@ router
 
     .put(requireBody(['username']), userController.updateUser)
 
-    .delete(userController.deleteUser)
+    .delete(apiKeysCheck, userController.deleteUser)
 
 export default router

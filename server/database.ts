@@ -40,7 +40,7 @@ const db:DbApi = {
     
     
     writeDB: async (db: DbShape): Promise<void> => {
-        await fs.writeFile(DB_PATH, JSON.stringify(db, null, "utf-8"))
+        await fs.writeFile(DB_PATH, JSON.stringify(db, null, 2), "utf-8")
     },
     
     nextId: (items: Array<{id:number}>): number => {

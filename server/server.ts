@@ -6,10 +6,11 @@ import logReq from "../middleware/logReq.js";
 import userRoutes from "../routes/userRoutes.js";
 import postRoutes from "../routes/postRoutes.js";
 import dotenv from "dotenv";
+import likeRoutes from "../routes/likeRoutes.js";
 
-dotenv.config()
 
 // Setup
+dotenv.config() // loads the env file
 const port = process.env.PORT || 3015
 const app = express()
 const routesReport = rowdy.begin(app)
@@ -25,6 +26,7 @@ app.use(logReq);
 // Routes
 app.use('/api/users', userRoutes)
 app.use('/api/posts', postRoutes)
+app.use('/api/likes', likeRoutes)
 
 
 

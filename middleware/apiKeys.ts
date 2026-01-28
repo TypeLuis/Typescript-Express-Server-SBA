@@ -4,7 +4,7 @@ import type { RequestHandler } from "express";
 const apiKeys = ["perscholas", "ps-example", "hJAsknw-L198sAJD-l3kasx"]
 
 
-const apiKeysCheck:RequestHandler =  (req, res, next) => {
+const apiKeysCheck:RequestHandler =  (req, _res, next) => {
     var key = req.query["api-key"]
 
     // missing key

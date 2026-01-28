@@ -13,12 +13,14 @@
   "license": "ISC",
   "type": "module",
   "devDependencies": {
+    "@types/cli-table": "^0.3.4",
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.10",
     "@types/request": "^2.48.13",
     "tsx": "^4.21.0"
   },
   "dependencies": {
+    "cli-table": "^0.3.11",
     "dotenv": "^17.2.3",
     "express": "^5.2.1",
     "rowdy-logger": "^1.0.2"
