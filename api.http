@@ -94,5 +94,5 @@ Content-Type: application/json
 ###
 
 
-// Deletes a like, Post ID in params, UserID in body
+// Deletes a like, Post ID in params, UserID in body, API Key required
 DELETE http://localhost:3015/api/likes/1/likes?api-key=perscholas&userId=2
