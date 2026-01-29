@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.13.2/dist/axios.min.js"></script>
+    <script defer>
+        const setUsers = async () => {
+            const usersContainer = document.createElement('div')
+            usersContainer.classList.add("users")
+            console.log(usersContainer)
+            usersContainer.innerHTML = ""
+            let html = ""
+            const host = "#HOSTNAME#/api/users"
+            const users = (await axios.get(host)).data
+            console.log(users)
+            for(user of users){
+                const userData = (await axios.get(`${host}/${user.id}`)).data
+                console.log(userData)
+                const posts = userData.posts
+                // if(userData.posts.length > 0) console.log(userData.posts)
+                html += `
+                    <div class="user">
+                        <span class="name">Name: ${userData.name}</span>
+                        <span class="username">username: ${userData.username}</span>
+                          ${
+                            posts.length > 0
+                            ? posts.map(
+                                    (post) => `
+                                    <section class="posts">
+                                        <h2>Posts</h2>
+                                        <div class="post">
+                                        <span class="postTitle">Title: ${post.title}</span>
+                                        <span class="postContent">Content: ${post.content}</span>
+                                        </div>
+                                    </section>
+                                    `
+                                ).join("")
+
+                                : 
+
+                                ""
+                            }
+                    </div>
+                
+                `
+            }
+
+            usersContainer.innerHTML = html || `<p>No users yet.</p>`
+            document.body.append(usersContainer)
+        }
+        setUsers()
+    </script>
+</head>
+<body>
+    <main>
+        <!-- <div class="users">
+
+        </div> -->
+
+
+    </main>
+</body>
+</html>

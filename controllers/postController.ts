@@ -35,7 +35,15 @@ const postController = {
 
             if (!post) return next(msgError(404, "Post not found"))
 
-            res.json(post)
+            const likes = database.userLikes.filter(like => like.postId === post.id)
+
+            res.json({
+                ...post,
+                likes :{
+                    amount : likes.length,
+                    liked : likes
+                }
+            })
         } catch (error) {
             if (error instanceof Error) return next(msgError(500, error.message));
             return next(msgError(500, "Unknown error occurred"))
